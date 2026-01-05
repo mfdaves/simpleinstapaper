@@ -32,10 +32,7 @@ impl InstapaperSimpleClient {
         Ok(self
             .client
             .get(format!("{BASE_URL}/authenticate"))
-            .query(&[
-                ("username", self.username.as_str()),
-                ("password", self.password.as_str()),
-            ])
+            .basic_auth(&self.username, Some(&self.password))
             .send()
             .await?
             .status()
@@ -46,11 +43,8 @@ impl InstapaperSimpleClient {
         Ok(self
             .client
             .get(format!("{BASE_URL}/add"))
-            .query(&[
-                ("username", self.username.as_str()),
-                ("password", self.password.as_str()),
-                ("url", url.into().as_str()),
-            ])
+            .basic_auth(&self.username, Some(&self.password))
+            .query(&[("url", &url.into().as_str())])
             .send()
             .await?
             .status()

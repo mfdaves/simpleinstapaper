@@ -8,7 +8,7 @@ fn main(){
   dotenvy::dotenv().unwrap();
   
   // this will panic if you didnt add to your env
-  // INSTAPAPER_USERNAME or INSTAPAPER_PASSWORD
+  // INSTAPAPER_USERNAME and INSTAPAPER_PASSWORD
   let client = InstapaperSimpleClient::new();
 
   // otherwise you can use `with_credential` method
@@ -23,3 +23,6 @@ fn main(){
 }
 ```
 Both `auth` and `add` method return just a `bool`, if you need to have a better errors handling send a PR. 
+
+Based on the doc password is an optional parameter and if you have an account without password every string will works as well,
+for this reason I forgot to make it an `Option<String>` so make sure to put whatever you want instead. 

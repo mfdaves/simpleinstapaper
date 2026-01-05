@@ -1,4 +1,4 @@
-This is just a wrapper for the Instapaper Simple API (see [here](https://www.instapaper.com/api/simple))
+This is a wrapper for the Instapaper Simple API (see [here](https://www.instapaper.com/api/simple))
 It provides two endpoints: /authenticate and /add.
 This library exposed a simple client `InstapaperSimpleClient`. 
 ```rust
@@ -22,3 +22,4 @@ fn main(){
   client.add("https://en.wikipedia.org/wiki/The_Fellowship_of_the_Ring"); 
 }
 ```
+Both `auth` and `add` method return just a `bool`, if you need to have a better errors handling send a PR. 
